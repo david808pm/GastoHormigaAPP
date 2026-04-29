@@ -25,22 +25,30 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Iniciar Sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Documento:</label>
-          <input
-            type="text"
-            value={documento}
-            onChange={(e) => setDocumento(e.target.value)}
-            required
-          />
+    <div className="page">
+      <div className="page-content">
+        <h2>💰 Gastos Hormiga</h2>
+        <p>Controla tus gastos hormiga de forma simple y efectiva</p>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Número de Documento:</label>
+            <input
+              type="text"
+              value={documento}
+              onChange={(e) => setDocumento(e.target.value)}
+              placeholder="Ej: 123456789"
+              required
+            />
+          </div>
+          {error && <p className="error-message">⚠️ {error}</p>}
+          <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
+            Iniciar Sesión
+          </button>
+        </form>
+        <div className="form-link">
+          ¿No tienes cuenta? <a href="/register">Crear nueva cuenta</a>
         </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit">Iniciar Sesión</button>
-      </form>
-      <p>No tienes cuenta? <a href="/register">Regístrate</a></p>
+      </div>
     </div>
   );
 };

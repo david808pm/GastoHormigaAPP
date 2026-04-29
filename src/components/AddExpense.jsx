@@ -40,50 +40,57 @@ const AddExpense = ({ onExpenseAdded }) => {
 
   return (
     <div>
-      <h3>Añadir Gasto</h3>
+      <h3>➕ Añadir Nuevo Gasto</h3>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Valor:</label>
+        <div className="form-group">
+          <label>Valor (COP):</label>
           <input
             type="number"
             name="valor"
             value={formData.valor}
             onChange={handleChange}
+            placeholder="0"
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Descripción:</label>
           <input
             type="text"
             name="descripcion"
             value={formData.descripcion}
             onChange={handleChange}
+            placeholder="Ej: Café, Almuerzo..."
             required
           />
         </div>
-        <div>
-          <label>Fecha:</label>
-          <input
-            type="date"
-            name="fecha"
-            value={formData.fecha}
-            onChange={handleChange}
-            required
-          />
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div className="form-group">
+            <label>Fecha:</label>
+            <input
+              type="date"
+              name="fecha"
+              value={formData.fecha}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Categoría:</label>
+            <input
+              type="text"
+              name="categoria"
+              value={formData.categoria}
+              onChange={handleChange}
+              placeholder="Ej: Alimentación"
+              required
+            />
+          </div>
         </div>
-        <div>
-          <label>Categoría:</label>
-          <input
-            type="text"
-            name="categoria"
-            value={formData.categoria}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit">Añadir Gasto</button>
+        {error && <p className="error-message">{error}</p>}
+        <button type="submit" className="btn btn-primary">
+          Guardar Gasto
+        </button>
       </form>
     </div>
   );

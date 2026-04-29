@@ -37,3 +37,23 @@ export const addExpense = (expense) => {
   saveExpenses(expenses);
   return newExpense;
 };
+
+// Function to edit an expense
+export const editExpense = (id, updatedData) => {
+  const expenses = getExpenses();
+  const index = expenses.findIndex(e => e.id === id);
+  if (index !== -1) {
+    expenses[index] = { ...expenses[index], ...updatedData };
+    saveExpenses(expenses);
+    return expenses[index];
+  }
+  return null;
+};
+
+// Function to delete an expense
+export const deleteExpense = (id) => {
+  const expenses = getExpenses();
+  const filtered = expenses.filter(e => e.id !== id);
+  saveExpenses(filtered);
+  return true;
+};
