@@ -1,0 +1,59 @@
+Proyecto Integrador: App Gastos Hormiga
+Guía de Requerimientos - Segundo Avance (Funcionalidad e Interactividad)
+Este segundo hito tiene como objetivo transformar la interfaz estática en una aplicación funcional. Se evaluará la gestión de estados, el flujo de datos entre componentes y la capacidad de navegación en el cliente.
+Conceptos Clave a Desarrollar
+• Gestión de Estado (useState): Control de formularios y persistencia de la sesión de usuario.
+• Comunicación entre Componentes (Props): Flujo de información y funciones entre
+componentes.
+• Navegación Dinámica: Implementación de rutas para moverse entre las vistas del aplicativo.
+• Lógica de Acceso: Restricción de vistas privadas basada en el estado de autenticación local.
+Historias de Usuario (HUs)
+HU05 - Registro de Usuario
+Como nuevo usuario, quiero ingresar mis datos personales para que la aplicación cree mi perfil y me reconozca.
+• Criterio de aceptación: El formulario debe capturar nombres, tipoDocumento, documento y edad.
+• Técnico: Los datos deben guardarse en un estado o localStorage para simular la persistencia. HU06 - Inicio de Sesión
+Como usuario registrado, quiero ingresar con mi número de documento para acceder a mi información personal.
+• Criterio de aceptación: Validar que el documento coincida con un usuario existente. Si tiene éxito, habilitar el acceso a las áreas privadas.
+HU07 - Privacidad de Información (Rutas Protegidas)
+Como usuario, quiero que mi información financiera sea privada para que nadie pueda ver mis gastos sin haber iniciado sesión.
+(604) 480 88 22
+Cesde.edu.co
+Calle 49 41-9 Colombia - Antioquia - Medellín
+    Cesde S.A.S. NIT. 890.913.319-1
+ • Criterio de aceptación: Si un usuario intenta acceder manualmente a una ruta privada sin estar logueado, el sistema debe enviarlo al Login.
+• Técnico: Implementación de lógica de protección de rutas mediante componentes envolventes o lógica de redirección.
+HU08 - Visualización de Gastos (Props)
+Como usuario, quiero ver la lista de mis gastos registrados para tener el control de mis finanzas.
+• Criterio de aceptación: Mostrar un listado dinámico mapeando un array de objetos (datos simulados).
+• Técnico: La información de cada gasto debe pasar desde la página principal hacia componentes de UI específicos mediante props.
+HU09 - Registro de Gasto Hormiga
+Como usuario, quiero añadir un nuevo gasto especificando valor y categoría para mantener mi historial actualizado.
+• Criterio de aceptación: Formulario funcional con los campos: valor, descripción, fecha y categoría.
+• Técnico: Manejo de formularios controlados con useState. Al guardar, el nuevo registro debe aparecer en la lista visual inmediatamente.
+HU10 - Cierre de Sesión (Logout)
+Como usuario, quiero cerrar mi sesión para salir de mi cuenta de forma segura en dispositivos compartidos.
+HU11 - Gestión de Versiones y Colaboración (Developer Role)
+Como equipo de desarrollo, quiero mantener un flujo de trabajo constante en Git para asegurar la trazabilidad de las nuevas funcionalidades y el aporte equitativo.
+• Criterio de aceptación: El historial de GitHub debe mostrar commits significativos de todos los integrantes, asociados específicamente a la lógica de este avance (useState, Props, Router).
+HU12 - Documentación Técnica del Proyecto (Developer Role)
+Como equipo de desarrollo, quiero mantener el archivo README.md actualizado para documentar los cambios en la arquitectura y la lógica de navegación.
+• Criterio de aceptación: El README debe detallar el mapa de rutas actual, explicar la lógica (604) 480 88 22
+Cesde.edu.co
+Calle 49 41-9 Colombia - Antioquia - Medellín
+    Cesde S.A.S. NIT. 890.913.319-1
+
+ utilizada para proteger las vistas y listar las dependencias nuevas instaladas.
+Estándares de Desarrollo
+1. Arquitectura de Datos: Es obligatorio usar la carpeta services/ para gestionar los datos
+simulados (Mocks).
+2. Componentes Funcionales: Uso estricto de React Hooks.
+3. Validaciones: Los formularios no deben procesar datos vacíos. Se debe mostrar feedback
+visual en caso de error.
+Proyección a Momento 3 (Escalabilidad)
+Para asegurar que este trabajo sea útil en la siguiente etapa (Consumo de API real), el equipo debe:
+• Centralizar los Datos: No "quemar" datos directamente en los componentes. Todo debe
+venir de las funciones definidas en services/.
+• Respetar el Modelo del Back: Usar exactamente los nombres de atributos definidos en el
+PDF de Backend.
+• Preparar el Estado: Estructurar los estados de tal forma que en el próximo hito solo sea
+necesario añadir el hook useEffect para reemplazar los datos locales por llamadas asíncronas.
